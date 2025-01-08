@@ -1,0 +1,114 @@
+body
+{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(171, 219, 194);
+    /* background-image: url('./back.jpg');
+    background-repeat: no-repeat;
+    background-size: cover; */
+
+    align-items: center;    /* Centers vertically */
+    height: 100vh;          /* Ensures the body takes up the full viewport height */
+    margin: 0;
+
+    color:rgb(27, 6, 6);
+
+}
+.container
+{
+    border: 10px solid rgb(78, 50, 141);
+    display: flex;
+    width:400px;
+    aspect-ratio: 4/7;
+    flex-wrap:wrap;
+    background-color: black;
+
+    box-shadow: 10px 10px 20px 5px black;
+
+
+}
+.display
+{
+    border:2px solid rgb(0, 0, 0);
+    box-sizing: border-box;
+    width:400px;
+    height: 50px;
+    color:white;
+    background: rgb(0, 0, 0);
+    /* border-radius: 5%; */
+    font-size: 30px;
+    padding-left: 10px;
+    padding-top:5px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+.show
+{
+    border:2px solid black;
+    box-sizing: border-box;
+    width:400px;
+    height: 150px;
+    background: white;
+    /* border-radius: 5%; */
+    font-size: 30px;
+    padding-left: 10px;
+    padding-right:10px;
+
+    font-size:50px;
+
+    background-color: rgb(70, 162, 172);
+
+    /* 376 display */
+
+    display: flex;           /* Enables flexbox */
+    justify-content: flex-end; /* Aligns content horizontally to the right */
+    align-items: flex-end;  
+}
+.clear
+{
+    border:2px solid black;
+    box-sizing: border-box;
+    width:300px;
+    height:100px;
+    font-size: 40px;
+    border-radius: 5%;
+
+    background-color: rgb(0, 101, 147);
+    color:white
+}
+
+.divide, .mul, .add, .sub, .dot, .num
+{
+    border:2px solid black;
+    box-sizing: border-box;
+    width:100px;
+    height:100px;
+    font-size: 40px;
+    border-radius: 5%;
+    background-color: rgb(14, 132, 162);
+}
+
+.equal
+{
+    border:2px solid black;
+    box-sizing: border-box;
+    width:200px;
+    height:100px;
+    font-size: 50px;
+    border-radius: 5%;
+
+    background-color: rgb(0, 101, 147);
+
+    color:wheat
+}
+
+.num
+{
+    background-color: rgb(120, 191, 181);
+}
+
+button:active {
+    transform: scale(0.95); /* Slightly shrinks the button */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Simulates a pressed effect */
+    opacity: 0.8; /* Makes the button appear slightly dimmed */
+}
