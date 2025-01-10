@@ -112,3 +112,9 @@ button:active {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Simulates a pressed effect */
     opacity: 0.8; /* Makes the button appear slightly dimmed */
 }
+
+.active {
+    transform: scale(0.95); /* Slightly shrinks the button */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Simulates a pressed effect */
+    opacity: 0.8; /* Makes the button appear slightly dimmed */
+}

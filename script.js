@@ -339,3 +339,229 @@ function funeq(e)
         }
     }    
 }
+
+function keyActive (classes) {
+    const btn = document.getElementById(classes)
+    setTimeout(() => {
+        btn.classList.add('active');
+        setTimeout(() => {
+            btn.classList.remove('active');
+        }, 100); 
+    }, 100);
+}
+
+document.addEventListener("keydown",all);
+function all(e)
+{
+    let pre = e.key;
+    if(pre===".")
+    {
+        dotfun();
+        keyActive ('dot');
+    }
+
+    if(pre.charCodeAt(0) >= 48 && pre.charCodeAt(0) <= 57)
+    {
+        if(ans.length < 13)
+        {
+            const press = pre;
+            const n  = press.slice(-1);
+            ans+=n;
+            show.textContent = ans;
+        }
+        keyActive (`num${pre}`);
+    }
+
+    if(pre==="=")
+    {
+        funeq();
+        keyActive ('equal');
+    }
+
+    if(pre==="Delete")
+    {
+        ans="";
+        show.textContent = ans;
+        keyActive ('clear');
+    }
+
+    if(pre==="+" || pre==="-" || pre==="*" || pre ==="/")
+    {
+        let vhar = ans[ans.length - 1];
+        let op = pre;
+
+        if(pre==="+") op = "add";
+        if(pre==="-") op = "sub";
+        if(pre==="*") op = "mul";
+        if(pre==="/") op = "divide";
+
+        const a = "+";
+        const b = "-";
+        const c = "*";
+        const d = "/";
+
+        if(ans.length >=1 && ans.length <13 && vhar.charCodeAt(0) >= 48 && vhar.charCodeAt(0) <= 57)
+        {
+            
+            const a = "+";
+            const b = "-";
+            const c = "*";
+            const d = "/";
+
+            if(!ans.includes(a) && !ans.includes(b) && !ans.includes(c) && !ans.includes(d))
+            {
+                if(op==="divide")
+                {
+                    ans+="/";
+                    show.textContent = ans;
+                    keyActive('divide');
+                }
+                if(op==="mul")
+                {
+                    ans+="*";
+                    show.textContent = ans;
+                    keyActive('mul');
+                }
+                if(op==="add")
+                {
+                    ans+="+";
+                    show.textContent = ans;
+                    keyActive('add');
+                }
+                if(op==="sub")
+                {
+                    ans+="-";
+                    show.textContent = ans;
+                    keyActive('sub');
+                }
+            
+            }
+            else
+            {
+                let op1 ="";
+                let idx = 0;
+                let opr = "";
+                for(let i=0;i<ans.length;i++)
+                {
+                    if(ans[i]==a || ans[i]==b || ans[i]==c || ans[i]==d)
+                    {
+                        idx = i;
+                        opr = ans[i];
+                        break;
+                    }
+                    op1 += ans[i];
+                }
+                let op2 = "";
+                for(let i=idx+1;i<ans.length;i++)
+                {
+                    op2 += ans[i];
+                }
+
+                let result = 0;
+
+                if(opr=="/")
+                {
+                    op1 = parseFloat(op1);
+                    op2 = parseFloat(op2);
+                    result =  op1 / op2;
+                    result = formatNumber(result);
+                    ans = result;
+                }
+                if(opr=="*")
+                {
+                    op1 = parseFloat(op1);
+                    op2 = parseFloat(op2);
+                    result =  op1*op2;
+                    result = formatNumber(result);
+                    ans = result;
+                }
+                if(opr=="+")
+                {
+                    op1 = parseFloat(op1);
+                    op2 = parseFloat(op2);
+                    result =  op1+op2;
+                    result = formatNumber(result);
+                    ans = result;
+                }
+                if(opr=="-")
+                {
+                    op1 = parseFloat(op1);
+                    op2 = parseFloat(op2);
+                    result =  op1-op2;
+                    result = formatNumber(result);
+                    ans = result;
+                }
+
+                if(op==="divide")
+                {
+                    ans+="/";
+                    show.textContent = ans;
+                    keyActive('divide');
+                }
+                if(op==="mul")
+                {
+                    ans+="*";
+                    show.textContent = ans;
+                    keyActive('mul');
+                }
+                if(op==="add")
+                {
+                    ans+="+";
+                    show.textContent = ans;
+                    keyActive('add');
+                }
+                if(op==="sub")
+                {
+                    ans+="-";
+                    show.textContent = ans;
+                    keyActive('sub');
+                }
+
+                if (!isFinite(result)) {
+                    ans="";
+                }
+
+                if(isNaN(result))
+                {
+                    show.textContent="Can't Divide";
+                    ans="";
+                }
+            }
+        }
+
+        else if(vhar===a || vhar===b || vhar===c || vhar===d)
+        {
+            if ((op === "add" && vhar !== "+") ||
+                (op === "sub" && vhar !== "-") ||
+                (op === "mul" && vhar !== "*") ||
+                (op === "divide" && vhar !== "/")) {
+                if (op === "add") {
+                    ans = ans.substring(0, ans.length - 1) + "+";
+                    show.textContent = ans;
+                    keyActive('add');
+                } else if (op === "sub") {
+                    ans = ans.substring(0, ans.length - 1) + "-";
+                    show.textContent = ans;
+                    keyActive('sub');
+                } else if (op === "mul") {
+                    ans = ans.substring(0, ans.length - 1) + "*";
+                    show.textContent = ans;
+                    keyActive('mul');
+                } else if (op === "divide") {
+                    ans = ans.substring(0, ans.length - 1) + "/";
+                    show.textContent = ans;
+                    keyActive('divide');
+                }
+            }
+        }    
+    }
+
+    if(pre==="Backspace")
+    {
+        if(ans.length>=1)
+        {
+            ans = ans.substring(0,ans.length-1);
+            show.textContent = ans;
+        }
+    }
+}
