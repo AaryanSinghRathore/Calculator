@@ -52,11 +52,6 @@ function cal(e)
 
     if(ans.length >=1 && ans.length <13 && vhar.charCodeAt(0) >= 48 && vhar.charCodeAt(0) <= 57)
     {
-        const op = e.target.className;
-        const a = "+";
-        const b = "-";
-        const c = "*";
-        const d = "/";
 
         if(!ans.includes(a) && !ans.includes(b) && !ans.includes(c) && !ans.includes(d))
         {
